@@ -1,5 +1,11 @@
 <?php
 
+$(document).ready(function() {
+    $('.checkall').on('click', function () {
+        $(this).closest('fieldset').find(':checkbox').prop('checked', this.checked);
+    });
+});
+
 //add data to sql
 if (isset($_POST['lev_id'])){
 
@@ -39,13 +45,13 @@ $NewId = mysql_insert_id();
 
 //put data in connection table
 $base_id = $_POST['lev_id'];
-$array_id = $_POST['pro_id'];
+$array_pro = $_POST['pro_id'];
 
-$i = count($array_id)-1;
+$i = count($array_pro)-1;
 
 while ($i >= 0) {
 
-	$put_id = $array_id[$i];
+	$put_id = $array_pro[$i];
 
 	$queryconntable = "INSERT INTO probesch (proid, beschid, levid) VALUES ('".$put_id."', '".$NewId."', '".$base_id."')";
 	$conntablenew = mysql_query($queryconntable);
@@ -58,6 +64,7 @@ while ($i >= 0) {
 
 	$i = $i -1;
 }
+
 
 if ($new == false) 
 {
@@ -73,15 +80,15 @@ End:
 //make table to insert data
 else {
 echo '
-<table align="center">
+<table>
 	<form method="POST" action="index.php?page=beschikbaarheid">
 
-		<tr>	<th colspan="5">
+		<tr>	<th colspan="6">
 			<h1>Beschikbaarheid van producten aangeven</h1>
 		</th>	</tr>
 		<tr>	<th>
 			Kies leverancier
-		</th>	<td colspan=4>
+		</th>	<td colspan=5>
 			<select id="leverancier" size="1" Name="lev_id" onchange=DependDropList(this.value,"product") required>
 			<option value="">--- Select ---</option>';
 
@@ -107,13 +114,15 @@ echo '
 		
         <tr>	<th>
 			Kies product
-		</th>	<td colspan=4>
+		</th>	<td colspan=5>
 		<select id="droplist" size="3" Name="pro_id[]" multiple required>
 			<option value="">--- Select ---</option>
 			</select>
 		</td>	</tr>
 		<tr>
-          <th>Januari</th>	<td>
+			<fieldset>
+          <th>Januari</th>	
+			<td>
 			<input type="checkbox" value="on" name="kwa1_jan">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa2_jan">
@@ -121,9 +130,16 @@ echo '
            	<input type="checkbox" value="on" name="kwa3_jan">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa4_jan">
-            </td>	</tr>
+            </td>
+			<td>
+			<input type="checkbox" class="checkall">
+            </td>
+			</fieldset>
+		</tr>
 		<tr>
-          <th>Februari</th>	<td>
+			<fieldset>
+          <th>Februari</th>	
+			<td>
 			<input type="checkbox" value="on" name="kwa1_feb">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa2_feb">
@@ -131,9 +147,13 @@ echo '
            	<input type="checkbox" value="on" name="kwa3_feb">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa4_feb">
-            </td>	</tr>
+            </td>
+			</fieldset>
+		</tr>
 		<tr>
-          <th>Maart</th>	<td>
+			<fieldset>
+          <th>Maart</th>	
+			<td>
 			<input type="checkbox" value="on" name="kwa1_maa">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa2_maa">
@@ -141,8 +161,11 @@ echo '
            	<input type="checkbox" value="on" name="kwa3_maa">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa4_maa">
-            </td>	</tr>
+            </td>
+			</fieldset>
+		</tr>
 		<tr>
+			<fieldset>
           <th>April</th>	<td>
 			<input type="checkbox" value="on" name="kwa1_apr">
             </td>	<td>
@@ -151,8 +174,11 @@ echo '
            	<input type="checkbox" value="on" name="kwa3_apr">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa4_apr">
-            </td>	</tr>
+            </td>
+			</fieldset>
+		</tr>
 		<tr>
+			<fieldset>
           <th>Mei</th>	<td>
 			<input type="checkbox" value="on" name="kwa1_mei">
             </td>	<td>
@@ -161,8 +187,11 @@ echo '
            	<input type="checkbox" value="on" name="kwa3_mei">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa4_mei">
-            </td>	</tr>
+            </td>
+			</fieldset>
+		</tr>
 		<tr>
+			<fieldset>
           <th>Juni</th>	<td>
 			<input type="checkbox" value="on" name="kwa1_jun">
             </td>	<td>
@@ -171,9 +200,13 @@ echo '
            	<input type="checkbox" value="on" name="kwa3_jun">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa4_jun">
-            </td>	</tr>
+            </td>	
+			</fieldset>
+		</tr>
 		<tr>
-          <th>Juli</th>	<td>
+			<fieldset>
+          <th>Juli</th>	
+			<td>
 			<input type="checkbox" value="on" name="kwa1_jul">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa2_jul">
@@ -181,9 +214,13 @@ echo '
            	<input type="checkbox" value="on" name="kwa3_jul">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa4_jul">
-            </td>	</tr>
+            </td>
+			</fieldset>
+		</tr>
 		<tr>
-          <th>Augustus</th>	<td>
+			<fieldset>
+          <th>Augustus</th>	
+			<td>
 			<input type="checkbox" value="on" name="kwa1_aug">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa2_aug">
@@ -191,9 +228,13 @@ echo '
            	<input type="checkbox" value="on" name="kwa3_aug">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa4_aug">
-            </td>	</tr>
+            </td>
+			</fieldset>
+		</tr>
 		<tr>
-          <th>September</th>	<td>
+			<fieldset>
+          <th>September</th>	
+			<td>
 			<input type="checkbox" value="on" name="kwa1_sep">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa2_sep">
@@ -201,9 +242,13 @@ echo '
            	<input type="checkbox" value="on" name="kwa3_sep">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa4_sep">
-            </td>	</tr>
+            </td>
+			</fieldset>
+		</tr>
 		<tr>
-          <th>Oktober</th>	<td>
+			<fieldset>
+          <th>Oktober</th>	
+			<td>
 			<input type="checkbox" value="on" name="kwa1_okt">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa2_okt">
@@ -211,9 +256,13 @@ echo '
            	<input type="checkbox" value="on" name="kwa3_okt">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa4_okt">
-            </td>	</tr>
+            </td>
+			</fieldset>
+		</tr>
 		<tr>
-          <th>November</th>	<td>
+			<fieldset>
+          <th>November</th>	
+			<td>
 			<input type="checkbox" value="on" name="kwa1_nov">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa2_nov">
@@ -221,9 +270,13 @@ echo '
            	<input type="checkbox" value="on" name="kwa3_nov">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa4_nov">
-            </td>	</tr>
+            </td>
+			</fieldset>
+		</tr>
 		<tr>
-          <th>December</th>	<td>
+			<fieldset>
+          <th>December</th>	
+			<td>
 			<input type="checkbox" value="on" name="kwa1_dec">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa2_dec">
@@ -231,7 +284,9 @@ echo '
            	<input type="checkbox" value="on" name="kwa3_dec">
             </td>	<td>
 			<input type="checkbox" value="on" name="kwa4_dec">
-            </td>	</tr>
+            </td>
+			</fieldset>
+		</tr>
 		<tr>	<td colspan="5" align="center">
 			<button align="right" formmethod="POST" type="submit" formaction=./index.php?page='.$_GET['page'].'>
 						Opslaan</button>

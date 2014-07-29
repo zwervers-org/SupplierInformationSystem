@@ -7,6 +7,7 @@ $ordernew = "INSERT INTO product
 			(proname)
 			VALUES
 			('$_POST[pro_name]')";
+			#, '$_POST['pro_art']')";
 
 $nametoget = $_POST['pro_name'];
 
@@ -50,7 +51,7 @@ else {
 //make table to insert data
 else {
 echo '
-<table align="center">
+<table>
 	<form action="index.php?page='.$_GET['page'].'" method="post" name="'.$_GET['page'].' add">
 		<tr>	<th colspan=2>
 			<h1>'.ucfirst($_GET['page']).' toevoegen</h1>
@@ -58,7 +59,8 @@ echo '
 		<tr>	<th>
 			Naam	
 		</th>	<td>
-			<input type="text" name="pro_name" size="40">
+			<input type="text" name="pro_name" size="40">    
+			<input type="checkbox" name="pro_art"> Artikelgroep?
 		</td>	</tr>
 <!--dropdown leverancier-->
 		<tr>	<th>

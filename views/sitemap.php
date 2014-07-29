@@ -1,3 +1,4 @@
+
 <?php
 $dir = array();
 foreach (new DirectoryIterator($address) as $file)	{
@@ -21,19 +22,20 @@ foreach (new DirectoryIterator($address) as $file)	{
 		$dir[$file1] = $file1;}
 	}
 }
-echo '<div id="sitemap"><ul>';
+echo '<link rel="stylesheet" href="./template/sitemap.css" type="text/css">';
+echo '<div id="sitemap"><ul id="sitemap">';
 echo '<label>ROOT</label>';
 $i = 1;
 $l = 1;
 foreach ($dir as $a => $b)	{
-	echo '<div id="map'.$i.'"><ul>';
+	echo '<div id="map'.$i.'"><ul id="map'.$i.'">';
 	echo '<label>'.ucfirst($a).'</label>';
 	
 	if(is_array($b))	{
 	$i = $i + 1;
 		foreach ($b as $c => $d)	{
 		echo '<div id="map'.$i.'">';
-		echo '<ul>';
+		echo '<ul id="map'.$i.'">';
 		echo '<label id="content1">'.ucfirst($d).'</label>';
 		$diradd = $address.'/'.$a.'/'.$d;
 			foreach(new DirectoryIterator($diradd) as $v) {

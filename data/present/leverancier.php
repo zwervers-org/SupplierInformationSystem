@@ -24,20 +24,18 @@ echo '
 	
 			while ($row = mysql_fetch_array($resultlev)) {
 		echo '
-				<tr>	<td>
-					<center>
+				<tr>	<td id="present" class="change">
 						<input type="radio" onchange="this.form.submit()" name="lev_id" required value= ',$row['levid'], '>
-					</center>
-				</td>	<td>';
+				</td>	<td id="present">';
 					echo $row['levname'] ;
 			echo '
-				</td>	<td>' ;
+				</td>	<td id="present">' ;
 					echo $row['inkname'] ;
 			echo '
-				</td>	<td>';
+				</td>	<td id="present">';
 					echo $row['landid'] ;
 			echo '
-				</td>	<td>';
+				</td>	<td id="present">';
 					echo $row['landname'] ;
 			echo '
 				</td>	</tr>';

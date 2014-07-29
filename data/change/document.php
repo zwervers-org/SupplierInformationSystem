@@ -6,6 +6,9 @@ if (isset($_GET['del'])){
 	$docid = $_POST['doc_id'];
 	$aproid = $_POST['pro_id'];
 	
+	$long_url = $_POST[synergy];
+	$synergy = goo_gl_short_url($long_url);
+
 		//change data in document
 	$query = "UPDATE document
 			SET supply = '".$_POST['supply']."', supplydate = '".$_POST['supplydate']."', 
@@ -18,7 +21,7 @@ if (isset($_GET['del'])){
 				nop = '".$_POST['nop']."', nopdate = '".$_POST['nopdate']."', othcert = '".$_POST['othcert']."',
 			grond = '".$_POST['grond']."', water = '".$_POST['water']."', 
 				blad = '".$_POST['blad']."', othpro = '".$_POST['othpro']."',
-			opmerking = '".$_POST['opmerking']."', synergy = '".$_POST['synergy']."'
+			opmerking = '".$_POST['opmerking']."', synergy = '".$synergy."'
 			WHERE docid = '".$docid."'";
 
 
@@ -61,10 +64,11 @@ echo '</br>send: '.$send;
 
 	else {
 	$action = 'del';
+	$docid = $_POST['doc_id'];
 	$query = "DELETE FROM document WHERE docid = '" .$docid. "'";
-	mysql_query($query);
+	$send = mysql_query($query);
 	$querypro = "DELETE FROM prodoc WHERE docid = '" .$docid. "'";
-	mysql_query($query);
+	$sendpro = mysql_query($query);
 	}
 	
 if ($send == false){
@@ -220,7 +224,7 @@ echo '<table border="0" align="center">
 			</tr>
 			<tr>
 				<th>Synergy link</th>
-				<td colspan="3"><textarea rows=2 maxlength=250 name="synergy" style="width:448px">'.$doc['synergy'].'</textarea></td>
+				<td colspan="3"><textarea rows=2 name="synergy" style="width:448px">'.$doc['synergy'].'</textarea></td>
 			</tr>
 			<tr>
 				<td colspan=4>

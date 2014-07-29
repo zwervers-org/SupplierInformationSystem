@@ -28,19 +28,15 @@ echo '
 			$resultlev = mysql_query($selectlev);
 			
 	echo '
-		<tr>	<td width="50px">
-			<center>
+		<tr>	<td id="present" class="change">
 				<input type="radio" onchange="this.form.submit()" name="ink_id" required value= ',$row['inkid'],'>
-			</center>
-		</td>	<td>
-			<center>';
+		</td>	<td id="present">';
 				echo $row['inkid'] ;
 	echo '
-			</center>
-		</td>	<td>' ;	
+		</td>	<td id="present">' ;	
 			echo $row['inkname'] ;
 	echo '
-		</td>	<td class="opsomming">';
+		</td>	<td id="present" class="opsomming">';
 			while ($lev = mysql_fetch_array($resultlev)) {		
 				echo '<p>';
 					echo $lev['levname'].' - '.$lev['landname'];

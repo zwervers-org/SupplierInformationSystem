@@ -24,7 +24,7 @@ else {
 //show the table to add new data
 else {
 show:
-	echo '<table align="center">
+	echo '<table>
 	<tr>	<th colspan="2">
 		<h1>'.ucfirst($_GET['page']).' toevoegen</h1>
 	</th>	</tr>

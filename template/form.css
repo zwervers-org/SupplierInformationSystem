@@ -1,0 +1,73 @@
+table {
+width: 100%;
+border-collapse:collapse;
+}
+
+th {
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-color: #000000; 		
+	text-align: center;
+	font-weight: bold;
+	font-size: 10pt;
+	height: 20px;
+	width: 71px;
+}
+
+#DisplayPresent {
+width: 680px;
+}
+
+#present{
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-color: #000000;
+}
+
+td.change{
+text-align:center;
+width: 75px;
+}
+
+#formframe{
+	width: 980px;
+	top: 88px;
+}
+#formlist {
+	width:  240px;
+	height:auto;
+	float: right;
+	border-left:2px;
+	border-left-style:solid;
+	border-left-color:#807F83;
+	padding-left: 10px
+}
+#formlist h1{
+	border-bottom:2px;
+	border-bottom-color:#807F83;
+	border-bottom-style:solid;
+}
+
+#formlist h1.click{
+	cursor: pointer;
+}
+
+#formlist ul {
+	list-style-type:square;
+	text-align:left;
+
+}
+#formlist li a{
+	text-decoration: none;
+	color:black;
+}
+
+#add{
+	width:680px;
+	float: left;
+}
+
+#change{
+	width:680px;
+	float: left;
+}

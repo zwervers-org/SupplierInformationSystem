@@ -10,11 +10,13 @@ session_start();
 else {
 sec_session_start();
 }
-	
-if (!isset($_SESSION['username'])){
+
+//if (!isset($_SESSION['username']) OR !isset($_COOKIE['username'])){
+if (login_check($sec_login) == false) {
 	
 	$bodypage = $address."/input/login.php";
 	$title = "Login";
+	//echo '<SCRIPT LANGUAGE="JavaScript">window.alert("Session is NOT set")</SCRIPT>';
 }
 
 else {
@@ -99,7 +101,8 @@ echo '<head>
 
 	<meta name="description" content="OTC overzichten" />
 
-	<link rel="stylesheet" href="./template/basis.css" type="text/css">
+	<link rel="stylesheet" href="./template/body.css" type="text/css">
+	<link rel="stylesheet" href="./template/menu.css" type="text/css">	
 		
 	<title>'.$title.'</title>
 	

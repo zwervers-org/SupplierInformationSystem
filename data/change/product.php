@@ -4,7 +4,7 @@ if (isset($_GET['del'])){
 	if ($_GET['del'] == 'no'){
 
 	$action = 'change';
-	$query = "UPDATE product SET proname = '".$_POST['pro_name']."' WHERE proid = '".$_POST['pro_id']."'";
+	$query = "UPDATE product SET proname = '".$_POST['pro_name']."', proart = '".$_POST['pro_art']."' WHERE proid = '".$_POST['pro_id']."'";
 	$send = mysql_query($query);
 	
 	//clear connection table
@@ -85,8 +85,9 @@ $sendpro = mysql_query($querypro);
 			<input type="hidden" name="pro_id" value="'.$prochange['proid'].'"></td>
 		</tr>
 		<tr>	<th>Naam</th>	<td>
-			<input type="text" name="pro_name" value="'.$prochange['proname'].'"></td>
-		</tr>';
+			<input type="text" name="pro_name" value="'.$prochange['proname'].'">    
+			<input type="checkbox" name="pro_art" value="'.$prochange['proart'].'"> Artikel groep?
+		</td>		</tr>';
 		
 		//array of selected suppliers
 		$levnames = "";

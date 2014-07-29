@@ -9,7 +9,7 @@ define("USER", "sec_user"); // The database username.
 define("PASSWORD", "eKcGZr59zAa2BEWU"); // The database password. 
 define("DATABASE", "secure_login"); // The database name.
  
-$mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
+$sec_login = new mysqli(HOST, USER, PASSWORD, DATABASE);
 // If you are connecting via TCP/IP rather than a UNIX socket remember to add the port number as a parameter.
 
 //Database gegevens
@@ -18,7 +18,7 @@ $cfg['host'] = 'localhost'; // Meestal localhost
 $cfg['user'] = 'otcsysteem'; // gebruikersnaam
 $cfg['pass'] = 'OTCsysprodoc'; // Paswoord database
 $cfg['db'] = 'otcsysteem'; // Database naam
-$cfg['uren'] = 24; // Aantal uren ingelogd 
+$cfg['uren'] = 8; // Aantal uren ingelogd 
  
 // maak verbinding met de database
 $verbinding = mysql_connect($cfg['host'], $cfg['user'], $cfg['pass']);

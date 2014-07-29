@@ -2,7 +2,7 @@
 
 if(!isset($_POST['email'])){
 if (basename($_SERVER['PHP_SELF']) == "login.php") {
-	header("location: ./../index.php");
+	header("location: ./../../index.php");
 }}
 
 include './include.php';
@@ -15,13 +15,21 @@ else{
 sec_session_start(); // Our custom secure way of starting a php session. 
 }
 
+if (!isset($_POST['remember'])){
+$remember = "no";
+}
+
+else{
+$remember = $_POST['remember'];
+}
+
 if(isset($_POST['email'], $_POST['p'])) { 
    $email = $_POST['email'];
    $password = $_POST['p']; // The hashed password.
    
-	if(login($email, $password, $mysqli) !== true) {    
+	if(login($email, $password, $remember, $sec_login) !== true) {    
 		// Login failed
-		$return = login($email, $password, $mysqli);
+		$return = login($email, $password, $remember, $sec_login);
 		switch ($return){
 			case 1:
 			//echo '<script>alert("'.$email.' is locked")</script>';

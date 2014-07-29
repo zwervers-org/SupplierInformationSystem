@@ -2,6 +2,9 @@
 //add data to sql
 if (isset($_POST['lev_id'])){
 
+$long_url = $_POST[synergy];
+$synergy = goo_gl_short_url($long_url);
+
 $querydoc = "INSERT INTO document
 			(levid, 
 			supply, supplydate, regform, regfdate, copper, copdate, othdoc,
@@ -16,7 +19,7 @@ $querydoc = "INSERT INTO document
 			'$_POST[gg]','$_POST[ggdate]','$_POST[bio]','$_POST[biodate]','$_POST[ifs]','$_POST[ifsdate]','$_POST[bios]',
 				'$_POST[biosdate]','$_POST[nop]','$_POST[nopdate]','$_POST[othcert]',
 			'$_POST[grond]','$_POST[water]','$_POST[blad]','$_POST[othpro]',
-			'$_POST[opmerking]','$_POST[synergy]')";
+			'$_POST[opmerking]','$synergy')";
 
 //declare in the order variable
 $insertdoc = mysql_query($querydoc);	//order executes
@@ -57,13 +60,14 @@ if ($insertdoc == false) {
 elseif ($prodocnew == false) {
 	echo showSQLError($querypro,mysql_error(),'Fout: page='.$_GET['page'].'& action='.$action.' & function=prodocnew.');}
 else {
-	echo '<meta http-equiv="refresh" content="0;URL=./index.php?page='.$_GET['page'].'&action=add">';}
+	echo '<meta http-equiv="refresh" content="0;URL=./index.php?page='.$_GET['page'].'&action=add">';
+	}
 }
 
 //make table to inset data
 else{
 // view on page
-echo '<table border="0" align="center">
+echo '<table>
   <tr>
 	<th colspan=4><h1>Documenten toevoegen aan leverancier</h1></th>
   </tr>
@@ -181,7 +185,7 @@ echo '<table border="0" align="center">
 			</tr>
 			<tr>
 				<th>Synergy link</th>
-				<td colspan="3"><textarea rows=2 maxlenght=250 name="synergy" style="width:474px"></textarea></td>
+				<td colspan="3"><textarea rows=2 name="synergy" style="width:474px"></textarea></td>
 			</tr>
 			<tr>
 			  <td colspan=4 align="center"><input type="submit" name="submit" value="Opslaan"></td>

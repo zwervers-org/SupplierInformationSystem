@@ -30,19 +30,24 @@ $resultpro = mysql_query($selectpro);
 			$resultlev = mysql_query($selectlev);
 			
 echo '
-		<tr>	<td width="50px">
-			<center>
+		<tr>	<td id="present" class="change">
 				<input type="radio" onchange="this.form.submit()" name="pro_id" required value= '.$row['proid'].'>
-			</center>
-		</td>	<td>';
+		</td>	';
+		#if $row['proart'] = true {
+		#echo '<td id="present" colspan=2>';
+		#	echo $row['proname'];
+		#}
+		#else {
+		echo '<td id="present">';
 			echo $row['proname'];
 		
-		echo '</td><td><table>';
+		echo '</td><td id="present"><table>';
 			while ($lev = mysql_fetch_array($resultlev)) {	
 				echo '<tr><td class="opsomming">';
 					echo $lev['levname'] ;
 				echo '</td></tr>';
 			}
+		#}
 echo '</table></td></tr>';
 	}
 echo '

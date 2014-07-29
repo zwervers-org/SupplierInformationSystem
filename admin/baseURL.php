@@ -4,6 +4,6 @@ if(basename($_SERVER['PHP_SELF']) == "baseURL.php") {
 }
 
 //set document root
-	$address = $_SERVER['DOCUMENT_ROOT'].'/';
+	$address = $_SERVER['DOCUMENT_ROOT'].'/New';
 
 ?>

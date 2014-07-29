@@ -1,11 +1,11 @@
 <?php
 
 // errors weergeven
-ini_set('display_errors',0); // 1 == aan , 0 == uit
+ini_set('display_errors',1); // 1 == aan , 0 == uit
 error_reporting(E_ALL | E_STRICT);
 
 # sql debug
-define('DEBUG_MODE',false);  // true == aan, false == uit
+define('DEBUG_MODE',true);  // true == aan, false == uit
 
 # functie voor sql debug
     function showSQLError($sql,$error,$text='Error')

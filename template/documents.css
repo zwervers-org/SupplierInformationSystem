@@ -1,0 +1,217 @@
+thead{
+	display:block;
+	width:980px;
+}
+tbody {
+	height:640px;
+	width:995px;
+	overflow: auto;
+	display: block;
+}
+
+#change{
+	width:21px;
+}
+#lev{
+	width:81px;
+}
+#doc{
+	width:309px;
+}
+#cert{
+	width:330px;
+}
+#ana{
+	width:178px;
+}
+#opm{
+	width:35px;
+}
+#supply{
+	width:75px;
+}
+#reg{
+	width:85px;
+}
+#copper{
+	width:95px;
+}
+#ander{
+	width:39px;
+}
+#gg{
+	width:54px;
+}
+#bio{
+	width:67px;
+}
+#hygiene{
+	width:56px;
+}
+#bios{
+	width:51px;
+}
+#nop{
+	width:42px;
+}
+#overig{
+	width:45px;
+}
+#grond{
+	width:40px;
+}
+#water{
+	width:41px;
+}
+#blad{
+	width:29px;
+}
+#prod{
+	width:56px;
+}
+#prod1{
+	width:20px;
+}
+#prod2{
+	width:32px;
+}
+#pre{
+	font-size:12px;
+	text-align: center; 
+	font-family: monospace;
+	margin: auto;
+}
+/*img.popup {
+		position:relative;
+		z-index:24;
+		color:#000000;
+		text-decoration:none;
+	}
+	img.popup:hover {z-index:25; background-color:#FFCCD8 }
+	img.popup span {display:none; }
+	img.popup:hover span {
+		display:block;
+		position:absolute;
+		top:35px; left:15px;
+		width:200px;
+		padding:3px;
+		border:1px solid #000000;
+		background-color:#FFCCCF; color:#000;
+	}
+*/
+tbody.popup{
+	height:50px;
+	width:100px;
+}
+td.popup {
+		position:relative;
+		z-index:24;
+		text-decoration:none;
+	}
+	td.popup:hover {z-index:25}
+	td.popup span{
+		display: none;
+		width:100px;
+		list-style-type:none;
+		background-color: #807F83;
+		border: #666;
+		border: none;
+		padding: 0px;
+	}
+
+	td.popup:hover span{
+		display: block;
+		position: absolute;
+		font-size:12px;
+	}
+
+img.nr1 {
+	float:inherit;
+	width: 20px;
+	height: 22px;
+	background:url(/New/image/digit.gif) -20px 0;
+}
+img.nr2 {
+	float:inherit;
+	width: 20px;
+	height: 22px;
+	background:url(/New/image/digit.gif) -39px 0;
+}
+img.nr3 {
+	float:inherit;
+	width: 20px;
+	height: 22px;
+	background:url(/New/image/digit.gif) -59px 0;
+}
+img.nr4 {
+	float:inherit;
+	width: 20px;
+	height: 22px;
+	background:url(/New/image/digit.gif) -78px 0;
+}
+img.nr5 {
+	float:inherit;
+	width: 20px;
+	height: 22px;
+	background:url(/New/image/digit.gif) -98px 0;
+}
+img.nr6 {
+	float:inherit;
+	width: 20px;
+	height: 22px;
+	background:url(/New/image/digit.gif) -117px 0;
+}
+img.nr7 {
+	float:inherit;
+	width: 20px;
+	height: 22px;
+	background:url(/New/image/digit.gif) -137px 0;
+}
+img.nr8 {
+	float:inherit;
+	width: 20px;
+	height: 22px;
+	background:url(/New/image/digit.gif) -157px 0;
+}
+img.nr9 {
+	float:inherit;
+	width: 20px;
+	height: 22px;
+	background:url(/New/image/digit.gif) -176px 0;
+}
+img.nr10 {
+	float:inherit;
+	width: 20px;
+	height: 22px;
+	background:url(/New/image/digit.gif) 216px 0;
+}
+img.nr11 {
+	float:inherit;
+	width: 20px;
+	height: 22px;
+	background:url(/New/image/digit.gif) -195px 0;
+}
+
+td .opsomming {
+	border-bottom: 0px;
+	font-weight: normal;
+	font-size: 8pt;
+}
+
+th {
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-color: #000000; 		
+	text-align: center;
+	font-weight: bold;
+	font-size: 9pt;
+}
+
+td {
+	border-bottom: 1px;
+    border-bottom-style: solid;
+    border-color: #000000;
+	font-weight: normal;
+	text-align: left;
+	font-size: 8pt;
+}

@@ -20,8 +20,8 @@ $username = $_SESSION['username'];
 
 //set overviews names
 	$AllOverview = array(
-		"documentoverview", "beschikbaarheidoverview", "landoverview", "levoverview", "prooverview", "inkoverview");
-		// 0					1							2				3				4			5
+		"documentoverview", "beschikbaarheidoverview", "landoverview", "levoverview", "prooverview", "inkoverview", "sitemap", "beschikbaarheidoverview1");
+		// 0					1							2				3				5			6				7
 		
 //available documententries and overviews for administrator
 	if (in_array($username, $admin)){
@@ -33,7 +33,7 @@ $username = $_SESSION['username'];
   
 //available documententries and overviews for moderator
 	elseif (in_array($username, $moderator)){
-	unset($AllEntry[5], $AllOverview[1]);
+	unset($AllEntry[5], $AllOverview[1], $AllOverview[6]);
 	$DataEntry=$AllEntry;
 	$DocOverview=$AllOverview;
 	//enable or disable extern links
@@ -42,7 +42,7 @@ $username = $_SESSION['username'];
  
 //available documententries and overviews for user
 	else{
-	unset($AllOverview[1], $AllOverview[2], $AllOverview[3], $AllOverview[4], $AllOverview[5]);
+	unset($AllOverview[1], $AllOverview[2], $AllOverview[3], $AllOverview[4], $AllOverview[5], $AllOverview[6]);
 	$DataEntry=array("");
 	$DocOverview=$AllOverview;
 	//enable or disable extern links

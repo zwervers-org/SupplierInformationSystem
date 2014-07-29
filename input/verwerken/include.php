@@ -9,6 +9,6 @@ include($address.'/script/functions.php');
 
 include ($address.'/admin/db_connect.php');
 
-include($address.'/script/error.php');
+//include($address.'/script/error.php');
 
 ?>

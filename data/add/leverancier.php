@@ -93,7 +93,7 @@ else {
 else {
 show:
 echo '
-<table align="center">
+<table>
 	<tr>	<th colspan=2>
 		<h1>'.ucfirst($_GET['page']).' toevoegen</h1>
 	</th>	</tr>

@@ -54,7 +54,7 @@ function reghash(form, oldpassword, newpassword) {
 function showHide(ShowHideDiv) {
     var ele = document.getElementById(ShowHideDiv.id);
 		if(ele.style.display == "") {
-			ele.style.display = "none";
+			ele.style.display = "block";
 		}
 		else if(ele.style.display == "block") {
 			ele.style.display = "none";

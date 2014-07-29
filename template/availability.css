@@ -1,0 +1,67 @@
+table {
+width: 100%;
+border-collapse:collapse;
+}
+
+th {
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-color: #000000; 		
+	text-align: center;
+	font-weight: bold;
+	font-size: 8pt;
+	height: 20px;
+	width: 71px;
+}
+
+#product{
+	width: 115px;
+}
+
+#product a{
+	text-decoration:none;
+	color:black;
+}
+
+#change{
+	width: 10px;
+}
+
+#month{
+    border-left: 1px;
+	border-right: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+    border-color: #000000; 
+}
+
+td span{
+	display: none;
+    list-style-type:none;
+	position: absolute;
+    float:inherit;
+	background-color: #807F83;
+    border: #666;
+    border: none;
+    padding: 0px;
+}
+
+td:hover span{
+    display: block;
+    font-size:12px;
+}
+
+td {
+	border-bottom: 1px;
+    border-bottom-style: solid;
+    border-color: #000000;
+	font-weight: normal;
+	text-align: left;
+	font-size: 8pt;
+}
+
+td a {
+	color:black;
+	text-decoration:none;
+	color:#FFFFFF;
+}

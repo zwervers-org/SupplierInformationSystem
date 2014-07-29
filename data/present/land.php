@@ -20,14 +20,16 @@ echo'<table align="center">
 					ORDER BY levname ASC";
 	$resultlev = mysql_query($selectlev);
 		
-		echo '<tr><td><center><input type="radio" onchange="this.form.submit()" name="land_id" required value= ',$row['landid'], '></center></td>';
-    echo '<td>';
+		echo '<tr><td id="present" class="change">
+			<input type="radio" onchange="this.form.submit()" name="land_id" required value= ',$row['landid'], '>
+			</td>';
+    echo '<td id="present">';
 		
     	echo $row['landid'] ;
-	echo '</td><td>' ;
+	echo '</td><td id="present">' ;
 		
 		echo $row['landname'] ;
-	echo '</td><td><table>';
+	echo '</td><td id="present"><table>';
 		
 		while ($lev = mysql_fetch_array($resultlev)) {	
 		echo '<tr><td class="opsomming">';

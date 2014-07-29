@@ -24,9 +24,10 @@ if(isset($_GET['LogInError'])) {
 }}
 ?>
 <div id="login">
-<form action="./input/verwerken/login.php" method="post" name="login_form">
-   Email: <input type="email" name="email" required placeholder=" E-mail address"/><br />
-   Password: <input type="password" name="password" id="password" required placeholder=" Password"/><br />
-   <input type="submit" value="Login" onclick="formhash(this.form, this.form.password);" />
+<form action="./input/verwerken/login.php" method="post" id="login_form" name="login_form">
+   Email: <input type="email" name="email" autocomplete="on" required placeholder=" E-mail address"><br />
+   Password: <input type="password" name="password" id="password" placeholder=" Password"><br />
+   <input type="checkbox" name="remember" value="yes"> Remember me<br />
+   <input type="submit" value="Login" onclick="formhash(this.form, this.form.password);">
 </form>
 </div>
