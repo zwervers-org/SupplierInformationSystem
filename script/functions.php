@@ -240,7 +240,7 @@ function GetUsers ($sec_login){
 		die($data->getMessage());
 }
 
-print_r($data);
+#print_r($data);
 	return $data;
 }
 
@@ -396,6 +396,8 @@ $OrderBy = OrderBy();
 $combined = array();
 $supl = '';
 
+if (!empty($product)){
+
 	foreach ($month as $k => $v){
 		$combined['kwar'.$v] = '';
 	}
@@ -408,27 +410,27 @@ $supl = '';
 	
 	while ($row = mysql_fetch_array($resultkalender)){
 		if ($supl <> $row['levid']){
-		foreach ($month as $k => $v){
-			if ($row['kwar'.$v] == 'on') {
-				//make array for first entery
-				if (empty($combined['kwar'.$v])) {
-					$combined['kwar'.$v] = $row['levid'];}
-					
-				else{
-					$value = $combined['kwar'.$v];
-					$combined['kwar'.$v] = $value. ', '. $row['levid'];}
+			foreach ($month as $k => $v){
+				if ($row['kwar'.$v] == 'on') {
+					//make array for first entery
+					if (empty($combined['kwar'.$v])) {
+						$combined['kwar'.$v] = $row['levid'];}
+						
+					else{
+						$value = $combined['kwar'.$v];
+						$combined['kwar'.$v] = $value. ', '. $row['levid'];}
+				}
+				else {
+					if (empty($combined['kwar'.$v])) {
+						$combined['kwar'.$v] = -1;}
+				}
 			}
-			else {
-				if (empty($combined['kwar'.$v])) {
-					$combined['kwar'.$v] = -1;}
-			}
-		}
 		$supl = $row['levid'];
 		}
 	}
 	
 	return $combined;
-}
+}}
 
 function GetInfo($proname, $levid){
 $selectproduct = "SELECT leverancier.levname, inkoper.inkname, landen.*
