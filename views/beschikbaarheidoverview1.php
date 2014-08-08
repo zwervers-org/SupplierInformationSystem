@@ -39,7 +39,7 @@ while ($row = mysql_fetch_array($resultbesch)) {
 //mysql_data_seek($resultbesch, 0);
 
 $procheck = "";
-$month = makemonth();	
+$month = makemonth();
 
 for ($c = 0; $c < count($unique); $c ++){
 	//print the product
@@ -55,9 +55,9 @@ for ($c = 0; $c < count($unique); $c ++){
 #				AND leverancier.inkid = inkoper.inkid
 #				ORDER BY ".OrderBy()."";	
 #	$resultproinf = mysql_query($selectbesch);
-	
+
 	$combined = combinetable(key($unique));
-	
+
 	#colspan count
 		$nr = 1;
 	#previous suppliers check
@@ -68,31 +68,29 @@ for ($c = 0; $c < count($unique); $c ++){
 		$land = array();
 		$inkoper = array();
 	
-	echo "<br><br>product: ".key($unique)."</br>";
-	print_r($combined);
+	#echo "<br><br>product: ".key($unique)."</br>";
+	#print_r($combined);
 	
 	foreach ($month as $k => $v){
-		echo '</br> month: kwar'.$v;
+		#echo '</br> month: kwar'.$v;
 		if ($combined['kwar'.$v] > -1) {	#product available
 			if ($combined['kwar'.$v] !== $prevsupp){ #new suppliers available
-				if (!$prevsupp){ #check if previous moth had suppliers
+				if(!empty($prevsupp)){
 				#first finish previous month
 					echo '<td colspan = '.$nr.' bgcolor=#00703C>';
-
-					for($c = 0; $c < count($leverancier); $c++){
+					
+					for($d = 0; $d < count($leverancier); $d++){
 						#first land information in cel
-						if ($c == 0){
-							echo'<a href="index.php?page=landoverview&land='.$land[$c].'">'.$landid[$c].'</a><span>';
+						if ($d == 0){
+							echo'<a href="index.php?page=landoverview&land='.$land[$d].'">'.$landid[$d].'1</a><span>';
 						}
 						
-						echo '<p>Leverancier: <a href="index.php?page=levoverview&lev='.$leverancier[$c].'">'.$leverancier[$c].'</a> -
-							<a href="index.php?page=landoverview&land='.$land[$c].'">'.$land[$c].'</a></p>
-							<p>Inkoper: <a href="index.php?page=inkoverview&ink='.$inkoper[$c].'">'.$inkoper[$c].'</a></p>';
+						echo '<p>Leverancier: <a href="index.php?page=levoverview&lev='.$leverancier[$d].'">'.$leverancier[$d].'</a> -
+							<a href="index.php?page=landoverview&land='.$land[$d].'">'.$land[$d].'</a></p>
+							<p>Inkoper: <a href="index.php?page=inkoverview&ink='.$inkoper[$d].'">'.$inkoper[$d].'</a></p>';
 					}
-					echo '</span></td>';
-				
-				$nr = 1;#reset column count
 				}
+					#echo '<p>column count = '.$nr.'</p><p>PrevSupp = '.$prevsupp.'</span></td>';
 			
 			#make list of individual suppliers
 				$suppliers = explode(',', $combined['kwar'.$v]);
@@ -107,9 +105,9 @@ for ($c = 0; $c < count($unique); $c ++){
 				foreach ($suppliers as $a => $b){
 					$ProInfo = GetInfo(key($unique), $b);
 					
-						echo '</br>';
-						print_r($ProInfo);
-						echo '</br>';
+						#echo '</br>';
+						#print_r($ProInfo);
+						#echo '</br>';
 					
 					$leverancier[$a] = $ProInfo['levname'];
 					$landid[$a] = $ProInfo['landid'];
@@ -121,47 +119,66 @@ for ($c = 0; $c < count($unique); $c ++){
 			elseif ($combined['kwar'.$v] == $prevsupp){ #same suppliers in this month
 			#next column
 				$nr = $nr +1;
-				echo '   '.$nr;
+				#echo ' | '.$nr;
 			}
 			
 			else { #no suppliers in this month
-			echo 'no sup';
-				if (!$prevsupp){ #check if there where suppliers in the previous month
-				echo 'prevsupp not empty';
-				#first finish previous month
-					echo '<td colspan = '.$nr.' bgcolor=#00703C>';
 
-					for($c = 0; $c < count($leverancier); $c++){
-						#first land information in cel
-						if ($c == 0){
-							echo'<a href="index.php?page=landoverview&land='.$land[$c].'">'.$landid[$c].'</a><span>';
-						}
-						
-						echo '<p>Leverancier: <a href="index.php?page=levoverview&lev='.$leverancier[$c].'">'.$leverancier[$c].'</a> -
-							<a href="index.php?page=landoverview&land='.$land[$c].'">'.$land[$c].'</a></p>
-							<p>Inkoper: <a href="index.php?page=inkoverview&ink='.$inkoper[$c].'">'.$inkoper[$c].'</a></p>';
-					}
-					echo '</span></td>';
-				
-					$nr = 1; #reset column count
-					$prevsupp = ""; #reset previous supplier
-				}
-				echo '<td></td>';
-				
 			}
 		}
 		else{ #product is not available
+			if (!empty($prevsupp)){ #check if there where suppliers in the previous month
+				#echo 'prevsupp not empty';
+				#first finish previous month
+					echo '<td colspan = '.$nr.' bgcolor=#00703C>';
+
+					for($e = 0; $e < count($leverancier); $e++){
+						#first land information in cel
+						if ($e == 0){
+							echo'<a href="index.php?page=landoverview&land='.$land[$e].'">'.$landid[$e].'2</a><span>';
+						}
+						
+						echo '<p>Leverancier: <a href="index.php?page=levoverview&lev='.$leverancier[$e].'">'.$leverancier[$e].'</a> -
+							<a href="index.php?page=landoverview&land='.$land[$e].'">'.$land[$e].'</a></p>
+							<p>Inkoper: <a href="index.php?page=inkoverview&ink='.$inkoper[$e].'">'.$inkoper[$e].'</a></p>';
+					}
+					echo '</span></td>';
+				}
+			
 			$nr = 1; #reset column count
 			$prevsupp = ""; #reset previous supplier
 					
 			echo '<td></td>';
 		}
 	}
-	
-	
-	
+	if ($nr > 1) {
+		#first finish previous month
+			echo '<td colspan = '.$nr.' bgcolor=#00703C>';
+
+			for($f = 0; $f < count($leverancier); $f++){
+				#first land information in cel
+				if ($f == 0){
+					echo'<a href="index.php?page=landoverview&land='.$land[$f].'">'.$landid[$f].'3</a><span>';
+				}
+				
+				echo '<p>Leverancier: <a href="index.php?page=levoverview&lev='.$leverancier[$f].'">'.$leverancier[$f].'</a> -
+					<a href="index.php?page=landoverview&land='.$land[$f].'">'.$land[$f].'</a></p>
+					<p>Inkoper: <a href="index.php?page=inkoverview&ink='.$inkoper[$f].'">'.$inkoper[$f].'</a></p>';
+			}
+			echo '</span></td>';
+	}
+
+echo '</tr>';
+
 next($unique);
 }
+
+
+if ($resultbesch === false) {
+    echo showSQLError($selectbesch,mysql_error(),'Fout met database.');}	
+echo '</table></form>';
+
+
 	exit ("<br><br>end new script");
 	//EXIT OLD SCRIPT BELOW
 while ($row = mysql_fetch_array($resultbesch)) {
@@ -250,14 +267,14 @@ while ($row = mysql_fetch_array($resultbesch)) {
 			
 		elseif ($nr > 0)	{ #finish supplier first -> get information in table
 			echo '<td colspan = '.$nr.' bgcolor=#00703C>';
-			foreach($leverancier as $c => $d){
-				if ($c < 1){
-					echo'<a href="index.php?page=landoverview&land='.$land[$c].'">'.$landid[$c].'</a><span>';
+			foreach($leverancier as $f => $g){
+				if ($f < 1){
+					echo'<a href="index.php?page=landoverview&land='.$land[$f].'">'.$landid[$f].'</a><span>';
 				}
-					#echo MakeTableBesch($leverancier[$c], $landid[$c], $land[$c], $inkoper[$c]);
-					echo '<p>Leverancier: <a href="index.php?page=levoverview&lev='.$leverancier[$c].'">'.$leverancier[$c].'</a> -
-						<a href="index.php?page=landoverview&land='.$land[$c].'">'.$land[$c].'</a></p>
-						<p>Inkoper: <a href="index.php?page=inkoverview&ink='.$inkoper[$c].'">'.$inkoper[$c].'</a></p>';
+					#echo MakeTableBesch($leverancier[$f], $landid[$f], $land[$f], $inkoper[$f]);
+					echo '<p>Leverancier: <a href="index.php?page=levoverview&lev='.$leverancier[$f].'">'.$leverancier[$f].'</a> -
+						<a href="index.php?page=landoverview&land='.$land[$f].'">'.$land[$f].'</a></p>
+						<p>Inkoper: <a href="index.php?page=inkoverview&ink='.$inkoper[$f].'">'.$inkoper[$f].'</a></p>';
 			}
 			echo '</span></td>';
 
